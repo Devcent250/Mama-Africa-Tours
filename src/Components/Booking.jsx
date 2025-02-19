@@ -1,11 +1,14 @@
 import React, { useRef, useState, useEffect } from 'react';
 import emailjs from '@emailjs/browser';
 import { useLocation } from 'react-router-dom';
+import confetti from 'canvas-confetti';
+import CloseIcon from '@mui/icons-material/Close';
 
 const Booking = ({ selectedTourFromParent }) => {
   const form = useRef();
   const [loading, setLoading] = useState(false);
   const [emailSent, setEmailSent] = useState(false);
+  const [showSuccessDialog, setShowSuccessDialog] = useState(false);
   const [selectedTour, setSelectedTour] = useState('');
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
@@ -13,8 +16,9 @@ const Booking = ({ selectedTourFromParent }) => {
   const [email, setEmail] = useState('');
   const [contact, setContact] = useState('');
   const [attendeeCategory, setAttendeeCategory] = useState('');
+  const [totalAmount, setTotalAmount] = useState('');
+  const [disableTourSelection, setDisableTourSelection] = useState(false);
 
-  // Sample tours data for dropdown
   const tours = [
     'Akagera National Park Safaris',
     'Mountain Gorilla Expeditions',
@@ -24,17 +28,33 @@ const Booking = ({ selectedTourFromParent }) => {
     'Gastronomic Experience',
   ];
 
+  const attendeeCategories = ['Single', 'Couple', 'Family'];
+
+
+  const attendeeCategoryPrices = {
+    Single: 100, 
+    Couple: 180, 
+    Family: 250, 
+  };
+
   const location = useLocation();
 
   useEffect(() => {
-    // Check if selectedTour is passed through location state
     const tourFromState = location.state?.selectedTour;
     if (tourFromState) {
-      setSelectedTour(tourFromState); // Automatically select the tour from state
+      setSelectedTour(tourFromState);
+      setDisableTourSelection(true); 
     } else if (selectedTourFromParent) {
-      setSelectedTour(selectedTourFromParent); // Optionally use the parent prop if provided
+      setSelectedTour(selectedTourFromParent);
+      setDisableTourSelection(true);
     }
   }, [location.state, selectedTourFromParent]);
+
+  useEffect(() => {
+    if (attendeeCategory) {
+      setTotalAmount(attendeeCategoryPrices[attendeeCategory]);
+    }
+  }, [attendeeCategory]);
 
   const sendEmail = (e) => {
     e.preventDefault();
@@ -42,27 +62,35 @@ const Booking = ({ selectedTourFromParent }) => {
 
     emailjs
       .sendForm(
-        'service_bbqzjtq',
-        'template_828oaud',
+        'service_mamafricatours',
+        'template_i59a0yi',
         form.current,
-        'sC3mWIql2tG9q39KF'
+        'pD8uv7c2Q7s5NzZ4E'
       )
       .then(
         () => {
           setLoading(false);
           setEmailSent(true);
-          console.log('SUCCESS!');
+          setShowSuccessDialog(true);
+          confetti({
+            particleCount: 100,
+            spread: 70,
+            origin: { y: 0.6 },
+          });
         },
         (error) => {
           setLoading(false);
-          console.log('FAILED ...', error.text);
+          console.error('FAILED ...', error.text);
         }
       );
   };
 
+  const handleCloseDialog = () => {
+    setShowSuccessDialog(false);
+  };
+
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100 py-12 px-4 font-Coolvetica">
-      {/* Loader overlay */}
       {loading && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
           <div className="text-center">
@@ -71,100 +99,108 @@ const Booking = ({ selectedTourFromParent }) => {
         </div>
       )}
 
-      {/* Container */}
-      <div className="w-full max-w-lg bg-white shadow-md rounded-lg p-6">
-        {/* Title outside the form */}
-        <h2 className="text-2xl font-bold text-green-600 text-center mt-28 mb-6">
-          Book Your Perfect Tour
-        </h2>
+      {showSuccessDialog && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+          <div className="bg-white p-6 rounded-lg shadow-md">
+            <h2 className="text-xl font-bold text-green-500 mb-4">Thank you!</h2>
+            <p className="text-gray-700">Your booking request has been sent successfully.</p>
+            <button
+              className="mt-4 bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded"
+              onClick={handleCloseDialog}
+            >
+              <CloseIcon />
+            </button>
+          </div>
+        </div>
+      )}
 
+      <div className="bg-white shadow-md rounded-lg w-full p-6 lg:w-1/2 mt-32">
         {!emailSent ? (
-          <form ref={form} onSubmit={sendEmail} className="space-y-6">
-            {/* Personal Information */}
+          <form ref={form} onSubmit={sendEmail} className="space-y-6 w-full">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="mb-4">
+              <div>
                 <label className="block text-gray-700 font-bold mb-2">
-                  Full Names <span className="text-red-500">*</span>
+                  Full Name <span className="text-red-500">*</span>
                 </label>
                 <input
                   type="text"
-                  name="user_name"
-                  placeholder="ex: Mark Devcent"
+                  name="full_name"
                   required
                   value={fullName}
-                  onChange={(e) => setFullName(e.target.value)} // Update full name
-                  className="w-full px-3 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500"
+                  onChange={(e) => setFullName(e.target.value)}
+                  className="w-full px-3 py-2 border rounded-lg shadow-sm focus:ring-2 focus:ring-green-500"
                 />
               </div>
-              <div className="mb-4">
+              <div>
                 <label className="block text-gray-700 font-bold mb-2">
                   Email <span className="text-red-500">*</span>
                 </label>
                 <input
                   type="email"
-                  name="user_email"
-                  placeholder="ex: devcent@gmail.com"
+                  name="email"
                   required
                   value={email}
-                  onChange={(e) => setEmail(e.target.value)} // Update email
-                  className="w-full px-3 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500"
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="w-full px-3 py-2 border rounded-lg shadow-sm focus:ring-2 focus:ring-green-500"
                 />
               </div>
             </div>
 
-            <div className="mb-4">
+            <div>
               <label className="block text-gray-700 font-bold mb-2">
                 Contact <span className="text-red-500">*</span>
               </label>
               <input
                 type="text"
-                name="user_contact"
-                placeholder="+(250) 788 886 427"
+                name="contact"
                 required
                 value={contact}
-                onChange={(e) => setContact(e.target.value)} // Update contact
-                className="w-full px-3 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500"
+                onChange={(e) => setContact(e.target.value)}
+                className="w-full px-3 py-2 border rounded-lg shadow-sm focus:ring-2 focus:ring-green-500"
               />
             </div>
 
-            {/* Booking Details */}
-            <div className="mb-4">
+            <div>
               <label className="block text-gray-700 font-bold mb-2">
                 Booking Period <span className="text-red-500">*</span>
               </label>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+              <div className="grid grid-cols-2 gap-2">
                 <input
                   type="date"
                   name="start_date"
                   required
                   value={startDate}
-                  onChange={(e) => setStartDate(e.target.value)} // Update start date
-                  className="w-full px-3 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500"
+                  onChange={(e) => setStartDate(e.target.value)}
+                  className="w-full px-3 py-2 border rounded-lg shadow-sm focus:ring-2 focus:ring-green-500"
                 />
                 <input
                   type="date"
                   name="end_date"
                   required
                   value={endDate}
-                  onChange={(e) => setEndDate(e.target.value)} // Update end date
-                  className="w-full px-3 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500"
+                  onChange={(e) => setEndDate(e.target.value)}
+                  className="w-full px-3 py-2 border rounded-lg shadow-sm focus:ring-2 focus:ring-green-500"
                 />
               </div>
             </div>
 
-            {/* Booking Tour Dropdown */}
-            <div className="mb-4">
+            <div>
               <label className="block text-gray-700 font-bold mb-2">
-                Which tour are you booking? <span className="text-red-500">*</span>
+                Tour Selection <span className="text-red-500">*</span>
               </label>
               <select
                 name="tour_selection"
-                required
                 value={selectedTour}
-                onChange={(e) => setSelectedTour(e.target.value)} // Update selected tour
-                className="w-full px-3 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500"
+                onChange={(e) => setSelectedTour(e.target.value)}
+                className="w-full px-3 py-2 border rounded-lg shadow-sm focus:ring-2 focus:ring-green-500"
+                disabled={disableTourSelection}
+                required
               >
-                <option value="">Select a tour</option>
+                <option value="" disabled>
+                  {disableTourSelection
+                    ? 'Tour selected from packages'
+                    : 'Select a tour'}
+                </option>
                 {tours.map((tour, index) => (
                   <option key={index} value={tour}>
                     {tour}
@@ -173,52 +209,49 @@ const Booking = ({ selectedTourFromParent }) => {
               </select>
             </div>
 
-            {/* Display Selected Tour */}
-            <div className="mb-4">
-              <label className="block text-gray-700 font-bold mb-2">
-                Selected Tour
-              </label>
-              <input
-                type="text"
-                value={selectedTour}
-                readOnly
-                className="w-full px-3 py-2 border rounded-lg shadow-sm bg-gray-100"
-              />
-            </div>
-
-            <div className="mb-4">
+            <div>
               <label className="block text-gray-700 font-bold mb-2">
                 Attendee Category <span className="text-red-500">*</span>
               </label>
               <select
                 name="attendee_category"
-                required
                 value={attendeeCategory}
-                onChange={(e) => setAttendeeCategory(e.target.value)} // Update attendee category
-                className="w-full px-3 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500"
+                onChange={(e) => setAttendeeCategory(e.target.value)}
+                className="w-full px-3 py-2 border rounded-lg shadow-sm focus:ring-2 focus:ring-green-500"
+                required
               >
-                <option value="Rwandan">Rwandan - $50 Per Day</option>
-                <option value="Couple">Couple - $90 Per Day</option>
-                <option value="Children">Children - $35 Per Day</option>
-                <option value="Foreigners">Foreigners - $180 Per Day</option>
+                <option value="" disabled>
+                  Select category
+                </option>
+                {attendeeCategories.map((category, index) => (
+                  <option key={index} value={category}>
+                    {category}
+                  </option>
+                ))}
               </select>
+            </div>
+
+            <div>
+              <label className="block text-gray-700 font-bold mb-2">
+                Total Amount <span className="text-red-500">*</span>
+              </label>
+              <input
+                type="number"
+                name="total_amount"
+                value={totalAmount}
+                readOnly
+                className="w-full px-3 py-2 border rounded-lg shadow-sm bg-gray-100"
+              />
             </div>
 
             <button
               type="submit"
-              className="w-full bg-green-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500"
+              className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded w-full"
             >
-              Send Booking Request
+              SEND BOOKING
             </button>
           </form>
-        ) : (
-          <div className="text-center">
-            <h2 className="text-2xl font-bold text-green-500">Thank you!</h2>
-            <p className="mt-2 text-gray-700">
-              Your booking request has been sent successfully.
-            </p>
-          </div>
-        )}
+        ) : null}
       </div>
     </div>
   );
