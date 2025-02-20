@@ -5,19 +5,19 @@ const Packages = memo(({ packagesData, onTourSelect }) => {
   const navigate = useNavigate();
 
   const handleBookNow = (tourName) => {
-    onTourSelect(tourName); // Optional: If you want to trigger some other logic
-    navigate('/booking', { state: { selectedTour: tourName } }); // Pass the selected tour through state
+    onTourSelect(tourName); 
+    navigate('/booking', { state: { selectedTour: tourName } }); 
   };
 
   return (
     <div className="container mx-auto px-4 py-8 font-coolvetica">
-        <div
+      <div
         className="bg-cover bg-center h-[400px] flex items-center justify-center ml-[-16px] mr-[-16px]"
         style={{
-          backgroundImage: `url('/img/20.jpg')`, // Adjust path if necessary
+          backgroundImage: `url('/img/20.jpg')`, 
         }}
       >
-        <h1 className="text-5xl text-white bg-opacity-50 p-4 rounded-lg">
+        <h1 className="text-5xl text-white bg-opacity-50 p-4 rounded-lg font-bold">
           Our Packages
         </h1>
       </div>
@@ -40,8 +40,8 @@ const Packages = memo(({ packagesData, onTourSelect }) => {
                   <p className="text-gray-700 mt-2">{packageItem.description}</p>
                 </div>
                 <button
-                  onClick={() => handleBookNow(packageItem.name)} // Pass the package name to the function
-                  className="mt-4 lg:mt-8 bg-green-500 hover:bg-green-700 text-white  py-2 px-4 lg:px-6 rounded transition duration-300 transform hover:scale-110 hover:shadow-lg"
+                  onClick={() => handleBookNow(packageItem.name)} 
+                  className="mt-4 lg:mt-8 bg-green-500 hover:bg-green-700 text-white py-2 px-4 lg:px-6 rounded transition duration-300 transform hover:scale-110 hover:shadow-lg"
                 >
                   BOOK NOW
                 </button>
