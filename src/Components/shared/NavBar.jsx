@@ -15,13 +15,6 @@ const NavBar = () => {
 
   return (
     <header className="fixed top-0 left-0 w-full z-50 mt-16 lg:mt-8 md:mt-8 bg-slate-100 shadow-md transition duration-500 ease-in-out">
-      <motion.div 
-              initial={{ opacity: 0, y: -50 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1 }}
-              className="max-w-4xl text-justify leading-relaxed font-coolvetica"
-            >
-      
       <nav className="container mx-auto flex items-center justify-between px-6 py-4">
         <div className="flex items-center">
           <img
@@ -48,7 +41,7 @@ const NavBar = () => {
         <ul className="hidden md:flex justify-center items-center space-x-6 text-green-600 font-coolvetica mx-auto">
           {['', 'Who We Are', 'Services', 'Packages', 'Contact Us'].map((item, index) => (
             <li key={index}>
-              <Link to={`/${item.toLowerCase().replace(/ /g, '-')}`} className="hover:text-yellow-300 transition duration-300">
+              <Link to={`/${item.toLowerCase().replace(/ /g, '-')}`} className="hover:text-[#D6ED07] transition duration-300">
                 {item === '' ? 'Home' : item}
               </Link>
             </li>
@@ -77,7 +70,6 @@ const NavBar = () => {
           </motion.div>
         )}
       </AnimatePresence>
-      </motion.div>
     </header>
   );
 };

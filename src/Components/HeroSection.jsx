@@ -22,6 +22,17 @@ const HeroSection = () => {
   const [selectedTour, setSelectedTour] = useState("");
   const navigate = useNavigate();
 
+  const tourOptions = [
+    "Akagera National Park Safaris",
+    "Mountain Gorilla Expeditions",
+    "Nyungwe Forest Adventures",
+    "Guided Birding Tours",
+    "Historical Sites Tour",
+    "Gastronomic Experience",
+    "Cultural City Tour",
+    "Wildlife Safari",
+  ];
+
   useEffect(() => {
     if (isAutoSliding) {
       const slideInterval = setInterval(() => {
@@ -53,9 +64,8 @@ const HeroSection = () => {
       animate={{ opacity: 1 }}
       transition={{ duration: 1 }}
     >
-    
       <motion.div
-        className="absolute inset-0 bg-black bg-opacity-100"
+        className="absolute inset-0 bg-black bg-opacity-50"
         initial={{ opacity: 0 }}
         animate={{ opacity: 0.5 }}
         transition={{ duration: 1.5 }}

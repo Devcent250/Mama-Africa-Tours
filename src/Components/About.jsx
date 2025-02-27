@@ -10,7 +10,6 @@ const faqs = [
 const About = () => {
   const navigate = useNavigate(); 
 
-  
   const handleBookingClick = () => {
     navigate("/booking"); 
   };
@@ -36,6 +35,7 @@ const About = () => {
         />
 
         <h1 className="text-xl mt-6">What Makes Us Unique:</h1>
+        
         <div className="mt-4">
           <h2 className="font-semibold">In-Depth Local Insight:</h2>
           <p>Our team consists of dedicated locals passionate about Rwanda's culture and hidden treasures.</p>
@@ -67,7 +67,6 @@ const About = () => {
           </li>
         </ul>
 
-        
         <div className="mt-10">
           <h2 className="text-xl text-green-600">Frequently Asked Questions</h2>
           {faqs.map((faq, index) => (

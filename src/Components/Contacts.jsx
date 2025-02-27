@@ -1,5 +1,6 @@
 import React from 'react';
 import ContactImage from "./img/contact-us.jpg";
+
 import { motion } from "framer-motion"
 function Contacts() {
   return (
@@ -98,4 +99,5 @@ function Contacts() {
 export default Contacts;
 
     
+
 

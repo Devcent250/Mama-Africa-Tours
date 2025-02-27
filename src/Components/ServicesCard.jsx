@@ -7,7 +7,7 @@ import img2 from "/img/04.jpg";
 import img3 from "/img/06.jpg";
 import img4 from "/img/08.jpg";
 import img5 from "/img/09.jpg";
-import img6 from "/img/img01.jpeg";
+import img6 from "/img/17.jpg"; // Ensure this is the correct image you want
 
 const services = [
   {
@@ -29,14 +29,14 @@ const services = [
     title: "Nyungwe Forest Adventures",
     slug: "nyungwe-forest-adventures",
     description:
-      "Nyungwe Forest Adventures offer an exciting journey into one of Africa’s oldest rainforests. Explore breathtaking landscapes, walk across the famous canopy walkway, and discover rare primates, birds, and stunning waterfalls. Perfect for adventure seekers and nature lovers!",
+      "Nyungwe Forest Adventures offer an exciting journey into one of Africa’s oldest rainforests. Explore breathtaking landscapes, walk across the famous canopy walkway, and discover rare primates, birds, and stunning waterfalls.",
   },
   {
     img: img4,
     title: "Guided Birding Tours",
     slug: "guided-birding-tours",
     description:
-      "Discover a paradise for bird lovers! With over 700 bird species, including rare and colorful ones, these guided tours take you through Rwanda’s lush forests, wetlands, and savannahs. Perfect for both beginners and expert bird watchers!",
+      "Discover a paradise for bird lovers! With over 700 bird species, including rare and colorful ones, these guided tours take you through Rwanda’s lush forests, wetlands, and savannahs. Perfect for bird watchers!",
   },
   {
     img: img5,
@@ -69,9 +69,6 @@ const ServicesCard = () => {
       animate={{ opacity: 1 }}
       transition={{ duration: 1 }}
     >
-
-
-
       <section id="services">
         <div className="container mx-auto px-4 md:px-8">
           <motion.div
@@ -87,6 +84,7 @@ const ServicesCard = () => {
                 transition={{ duration: 0.3 }}
                 className="relative bg-white shadow-lg w-full h-full rounded-lg overflow-hidden group"
               >
+                {/* Image Section */}
                 <div className="relative w-full h-72 overflow-hidden">
                   <motion.img
                     src={service.img}
@@ -96,21 +94,21 @@ const ServicesCard = () => {
                   <div className="absolute inset-0 bg-black bg-opacity-40 group-hover:bg-opacity-60 transition-opacity duration-300"></div>
                 </div>
 
+                {/* Text & Button Section */}
                 <div className="absolute inset-0 flex flex-col justify-center items-center text-white p-6 transition-all duration-500">
                   <h3 className="text-lg font-bold mb-2">{service.title}</h3>
                   <motion.p
-                    className="text-sm text-center opacity-0 group-hover:opacity-100  transform group-hover:translate-y-0 translate-y-4 transition-all duration-500"
-                    initial={{ opacity: 0 }}
-                    whileHover={{ opacity: 1 }}
+                    className="text-sm text-center opacity-0 group-hover:opacity-100 transform group-hover:translate-y-0 translate-y-4 transition-all duration-500"
                   >
                     {service.description}
                   </motion.p>
                 </div>
 
+                {/* Button */}
                 <motion.div className="relative flex justify-center mt-4 pb-4 z-10">
                   <motion.button
                     onClick={() => handleNavigation(service.slug)}
-                    className="bg-green-600 text-white py-2 px-6 rounded-md hover:bg-green-700 transition duration-300 relative z-20"
+                    className="bg-green-600 text-white py-2 px-6 rounded-md hover:bg-green-700 transition duration-300"
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
                   >
@@ -123,6 +121,7 @@ const ServicesCard = () => {
         </div>
       </section>
 
+      {/* Bottom Information Section */}
       <motion.div
         className="flex justify-center items-center mt-12"
         initial={{ opacity: 0 }}

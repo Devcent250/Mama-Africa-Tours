@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+
 import img1 from '/img/07.jpg';
 import img2 from '/img/04.jpg';
 import img3 from '/img/06.jpg';
@@ -60,10 +61,7 @@ const servicesData = [
 const Services = () => {
   return (
     <div className="container mx-auto px-4 py-12 font-Coolvetica bg-slate-200">
-
-
       <div
-
         className="bg-cover bg-center h-[400px] flex items-center justify-center ml-[-16px] mr-[-16px]"
         style={{ backgroundImage: `url('/img/DSC01135.jpeg')` }}
       >
@@ -71,7 +69,6 @@ const Services = () => {
           Our Services
         </h1>
       </div>
-
 
       <section id="services" className="mt-11">
         <div className="container mx-auto px-4 md:px-8">
@@ -88,7 +85,6 @@ const Services = () => {
                 transition={{ duration: 0.3 }}
                 className="relative bg-white shadow-lg w-full h-full rounded-lg overflow-hidden group"
               >
-
                 <div className="relative w-full h-72 overflow-hidden">
                   <motion.img
                     src={service.img}
@@ -97,7 +93,6 @@ const Services = () => {
                   />
                   <div className="absolute inset-0 bg-black bg-opacity-40 group-hover:bg-opacity-60 transition-opacity duration-300"></div>
                 </div>
-
 
                 <div className="absolute inset-0 flex flex-col justify-center items-center text-white p-6 transition-all duration-500">
                   <h3 className="text-lg font-bold mb-2">{service.title}</h3>
@@ -112,7 +107,6 @@ const Services = () => {
           </motion.div>
         </div>
       </section>
-
     </div>
   );
 };

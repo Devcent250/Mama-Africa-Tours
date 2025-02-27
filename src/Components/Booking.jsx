@@ -32,9 +32,9 @@ const Booking = ({ selectedTourFromParent }) => {
   const attendeeCategories = ['Single', 'Couple', 'Family'];
 
   const attendeeCategoryPrices = {
-    Single: 100, 
-    Couple: 180, 
-    Family: 250, 
+    Single: 100,
+    Couple: 180,
+    Family: 250,
   };
 
   const location = useLocation();
@@ -43,7 +43,7 @@ const Booking = ({ selectedTourFromParent }) => {
     const tourFromState = location.state?.selectedTour;
     if (tourFromState) {
       setSelectedTour(tourFromState);
-      setDisableTourSelection(true); 
+      setDisableTourSelection(true);
     } else if (selectedTourFromParent) {
       setSelectedTour(selectedTourFromParent);
       setDisableTourSelection(true);
@@ -120,7 +120,7 @@ const Booking = ({ selectedTourFromParent }) => {
       )}
 
       <motion.div
-        className="bg-white shadow-md rounded-lg w-full p-6 lg:w-1/2 mt-32 font-coolvetica"
+        className="bg-white shadow-md rounded-lg w-full p-6 lg:w-1/2 mt-32 font-Coolvetica"
         initial={{ y: -50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5 }}
@@ -138,7 +138,7 @@ const Booking = ({ selectedTourFromParent }) => {
                   required
                   value={fullName}
                   onChange={(e) => setFullName(e.target.value)}
-                  className="w-full px-3 py-2 border rounded-lg shadow-sm"
+                  className="w-full px-3 py-2 border rounded-lg shadow-sm focus:ring-2 focus:ring-green-500"
                 />
               </div>
               <div>
@@ -151,7 +151,7 @@ const Booking = ({ selectedTourFromParent }) => {
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="w-full px-3 py-2 border rounded-lg shadow-sm "
+                  className="w-full px-3 py-2 border rounded-lg shadow-sm focus:ring-2 focus:ring-green-500"
                 />
               </div>
             </div>
@@ -166,7 +166,7 @@ const Booking = ({ selectedTourFromParent }) => {
                 required
                 value={contact}
                 onChange={(e) => setContact(e.target.value)}
-                className="w-full px-3 py-2 border rounded-lg shadow-sm "
+                className="w-full px-3 py-2 border rounded-lg shadow-sm focus:ring-2 focus:ring-green-500"
               />
             </div>
 
@@ -181,7 +181,7 @@ const Booking = ({ selectedTourFromParent }) => {
                   required
                   value={startDate}
                   onChange={(e) => setStartDate(e.target.value)}
-                  className="w-full px-3 py-2 border rounded-lg shadow-sm "
+                  className="w-full px-3 py-2 border rounded-lg shadow-sm focus:ring-2 focus:ring-green-500"
                 />
                 <input
                   type="date"
@@ -189,77 +189,10 @@ const Booking = ({ selectedTourFromParent }) => {
                   required
                   value={endDate}
                   onChange={(e) => setEndDate(e.target.value)}
-                  className="w-full px-3 py-2 border rounded-lg shadow-sm "
+                  className="w-full px-3 py-2 border rounded-lg shadow-sm focus:ring-2 focus:ring-green-500"
                 />
               </div>
             </div>
-
-            <div>
-              <label className="block text-gray-700 font-bold mb-2">
-                Tour Selection <span className="text-red-500">*</span>
-              </label>
-              <select
-                name="tour_selection"
-                value={selectedTour}
-                onChange={(e) => setSelectedTour(e.target.value)}
-                className="w-full px-3 py-2 border rounded-lg shadow-sm "
-                disabled={disableTourSelection}
-                required
-              >
-                <option value="" disabled>
-                  {disableTourSelection
-                    ? 'Tour selected from packages'
-                    : 'Select a tour'}
-                </option>
-                {tours.map((tour, index) => (
-                  <option key={index} value={tour}>
-                    {tour}
-                  </option>
-                ))}
-              </select>
-            </div>
-
-            <div>
-              <label className="block text-gray-700 font-bold mb-2">
-                Attendee Category <span className="text-red-500">*</span>
-              </label>
-              <select
-                name="attendee_category"
-                value={attendeeCategory}
-                onChange={(e) => setAttendeeCategory(e.target.value)}
-                className="w-full px-3 py-2 border rounded-lg shadow-sm "
-                required
-              >
-                <option value="" disabled>
-                  Select category
-                </option>
-                {attendeeCategories.map((category, index) => (
-                  <option key={index} value={category}>
-                    {category}
-                  </option>
-                ))}
-              </select>
-            </div>
-
-            <div>
-              <label className="block text-gray-700 font-bold mb-2">
-                Total Amount <span className="text-red-500">*</span>
-              </label>
-              <input
-                type="number"
-                name="total_amount"
-                value={totalAmount}
-                readOnly
-                className="w-full px-3 py-2 border rounded-lg shadow-sm bg-gray-100"
-              />
-            </div>
-
-            <button
-              type="submit"
-              className="text-gray-800 bg-yellow-400 hover:bg-[rgb(237,255,79)] py-2 px-4 rounded w-full"
-            >
-              SEND BOOKING
-            </button>
           </form>
         ) : null}
       </motion.div>
