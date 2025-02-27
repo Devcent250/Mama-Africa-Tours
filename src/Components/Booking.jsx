@@ -3,6 +3,7 @@ import emailjs from '@emailjs/browser';
 import { useLocation } from 'react-router-dom';
 import confetti from 'canvas-confetti';
 import CloseIcon from '@mui/icons-material/Close';
+import { motion } from 'framer-motion';
 
 const Booking = ({ selectedTourFromParent }) => {
   const form = useRef();
@@ -29,7 +30,6 @@ const Booking = ({ selectedTourFromParent }) => {
   ];
 
   const attendeeCategories = ['Single', 'Couple', 'Family'];
-
 
   const attendeeCategoryPrices = {
     Single: 100, 
@@ -90,7 +90,7 @@ const Booking = ({ selectedTourFromParent }) => {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100 py-12 px-4 font-Coolvetica">
+    <div className="flex items-center justify-center min-h-screen bg-slate-200 py-12 px-4 font-Coolvetica">
       {loading && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
           <div className="text-center">
@@ -100,7 +100,12 @@ const Booking = ({ selectedTourFromParent }) => {
       )}
 
       {showSuccessDialog && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+        <motion.div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+        >
           <div className="bg-white p-6 rounded-lg shadow-md">
             <h2 className="text-xl font-bold text-green-500 mb-4">Thank you!</h2>
             <p className="text-gray-700">Your booking request has been sent successfully.</p>
@@ -111,10 +116,15 @@ const Booking = ({ selectedTourFromParent }) => {
               <CloseIcon />
             </button>
           </div>
-        </div>
+        </motion.div>
       )}
 
-      <div className="bg-white shadow-md rounded-lg w-full p-6 lg:w-1/2 mt-32">
+      <motion.div
+        className="bg-white shadow-md rounded-lg w-full p-6 lg:w-1/2 mt-32 font-coolvetica"
+        initial={{ y: -50, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.5 }}
+      >
         {!emailSent ? (
           <form ref={form} onSubmit={sendEmail} className="space-y-6 w-full">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -128,7 +138,7 @@ const Booking = ({ selectedTourFromParent }) => {
                   required
                   value={fullName}
                   onChange={(e) => setFullName(e.target.value)}
-                  className="w-full px-3 py-2 border rounded-lg shadow-sm focus:ring-2 focus:ring-green-500"
+                  className="w-full px-3 py-2 border rounded-lg shadow-sm"
                 />
               </div>
               <div>
@@ -141,7 +151,7 @@ const Booking = ({ selectedTourFromParent }) => {
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="w-full px-3 py-2 border rounded-lg shadow-sm focus:ring-2 focus:ring-green-500"
+                  className="w-full px-3 py-2 border rounded-lg shadow-sm "
                 />
               </div>
             </div>
@@ -156,7 +166,7 @@ const Booking = ({ selectedTourFromParent }) => {
                 required
                 value={contact}
                 onChange={(e) => setContact(e.target.value)}
-                className="w-full px-3 py-2 border rounded-lg shadow-sm focus:ring-2 focus:ring-green-500"
+                className="w-full px-3 py-2 border rounded-lg shadow-sm "
               />
             </div>
 
@@ -171,7 +181,7 @@ const Booking = ({ selectedTourFromParent }) => {
                   required
                   value={startDate}
                   onChange={(e) => setStartDate(e.target.value)}
-                  className="w-full px-3 py-2 border rounded-lg shadow-sm focus:ring-2 focus:ring-green-500"
+                  className="w-full px-3 py-2 border rounded-lg shadow-sm "
                 />
                 <input
                   type="date"
@@ -179,7 +189,7 @@ const Booking = ({ selectedTourFromParent }) => {
                   required
                   value={endDate}
                   onChange={(e) => setEndDate(e.target.value)}
-                  className="w-full px-3 py-2 border rounded-lg shadow-sm focus:ring-2 focus:ring-green-500"
+                  className="w-full px-3 py-2 border rounded-lg shadow-sm "
                 />
               </div>
             </div>
@@ -192,7 +202,7 @@ const Booking = ({ selectedTourFromParent }) => {
                 name="tour_selection"
                 value={selectedTour}
                 onChange={(e) => setSelectedTour(e.target.value)}
-                className="w-full px-3 py-2 border rounded-lg shadow-sm focus:ring-2 focus:ring-green-500"
+                className="w-full px-3 py-2 border rounded-lg shadow-sm "
                 disabled={disableTourSelection}
                 required
               >
@@ -217,7 +227,7 @@ const Booking = ({ selectedTourFromParent }) => {
                 name="attendee_category"
                 value={attendeeCategory}
                 onChange={(e) => setAttendeeCategory(e.target.value)}
-                className="w-full px-3 py-2 border rounded-lg shadow-sm focus:ring-2 focus:ring-green-500"
+                className="w-full px-3 py-2 border rounded-lg shadow-sm "
                 required
               >
                 <option value="" disabled>
@@ -246,13 +256,13 @@ const Booking = ({ selectedTourFromParent }) => {
 
             <button
               type="submit"
-              className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded w-full"
+              className="text-gray-800 bg-yellow-400 hover:bg-[rgb(237,255,79)] py-2 px-4 rounded w-full"
             >
               SEND BOOKING
             </button>
           </form>
         ) : null}
-      </div>
+      </motion.div>
     </div>
   );
 };

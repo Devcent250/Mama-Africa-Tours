@@ -9,14 +9,18 @@ import MissionVision from './Components/MissionVision';
 import Footer from './Components/shared/Footer';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
-
 import About from './Components/About';
 import Services from './Components/Services';
 import Packages from './Components/Packages';
+import AkageraPark from './Components/AkageraPark';
+import MountainGorilla from './Components/MountainGorilla';
 import Contacts from './Components/Contacts';
+import NyungweForest from './Components/NyungweForest';
+import GiudedBirding from './Components/GiudedBirding';
+import HistoricalSites from './Components/HistoricalSites';
+import GastronomicExperience from './Components/GastronomicExperience';
 
 function App() {
-  
   const [selectedTour, setSelectedTour] = useState(null);
 
   const packagesData = [
@@ -28,7 +32,7 @@ function App() {
     },
     {
       id: 2,
-      name: 'Mountain Gorilla Expeditions',
+      name: 'Gorilla Trekking Tours',
       description: 'Unwind and relax on the sunny beaches with our exclusive packages.',
       imageUrl: '/img/14.jpg',
     },
@@ -58,10 +62,8 @@ function App() {
     },
   ];
 
-  
   const handleTourSelect = (tourName) => {
-    setSelectedTour(tourName); 
-    
+    setSelectedTour(tourName);
   };
 
   return (
@@ -82,10 +84,16 @@ function App() {
           />
           <Route path="/who-we-are" element={<About />} />
           <Route path="/services" element={<Services />} />
-          <Route 
-            path="/packages" 
-            element={<Packages packagesData={packagesData} onTourSelect={handleTourSelect} />} 
+          <Route
+            path="/packages"
+            element={<Packages packagesData={packagesData} onTourSelect={handleTourSelect} />}
           />
+          <Route path="/packages/akagera-national-park" element={<AkageraPark />} />
+          <Route path="/packages/mountain-gorilla-expeditions" element={<MountainGorilla />} />
+          <Route path="/packages/nyungwe-forest-adventures" element={<NyungweForest />} />
+          <Route path="/packages/guided-birding-tours" element={<GiudedBirding />} />
+          <Route path="/packages/historical-sites-tour" element={<HistoricalSites />} />
+          <Route path="/packages/gastronomic-experience" element={<GastronomicExperience />} />
           <Route path="/booking" element={<Booking selectedTour={selectedTour} />} />
           <Route path="/contact-us" element={<Contacts />} />
         </Routes>

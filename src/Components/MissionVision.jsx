@@ -20,6 +20,8 @@ const MissionVision = () => {
             engagement, ensuring each journey is enriching, safe, and memorable for every traveler.”
           </p>
         </div>
+        
+       
       </div>
     </section>
   );
