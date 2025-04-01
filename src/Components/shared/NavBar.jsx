@@ -14,7 +14,7 @@ const NavBar = () => {
   };
 
   return (
-    <header className="fixed top-0 left-0 w-full z-50 mt-16 lg:mt-8 md:mt-8 bg-slate-100 shadow-md transition duration-500 ease-in-out">
+    <header className="fixed top-0 left-0 w-full z-50 mt-16 lg:mt-8 md:mt-8 bg-slate-200 shadow-md transition duration-500 ease-in-out">
       <nav className="container mx-auto flex items-center justify-between px-6 py-4">
         <div className="flex items-center">
           <img
