@@ -2,12 +2,22 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 
+<<<<<<< HEAD
 import img1 from "/img/07.jpg";
 import img2 from "/img/04.jpg";
 import img3 from "/img/06.jpg";
 import img4 from "/img/08.jpg";
 import img5 from "/img/09.jpg";
 import img6 from "/img/17.jpg"; // Ensure this is the correct image you want
+=======
+
+import img1 from '/img/07.jpg';
+import img2 from '/img/04.jpg';
+import img3 from '/img/06.jpg';
+import img4 from '/img/08.jpg';
+import img5 from '/img/09.jpg';
+import img6 from '/img/17.jpg';
+>>>>>>> 944bb1eda6ef84f62e27444a2edd129a2645b8c7
 
 const services = [
   {
@@ -63,6 +73,7 @@ const ServicesCard = () => {
   };
 
   return (
+<<<<<<< HEAD
     <motion.div
       className="container mx-auto px-4 py-8 font-coolvetica bg-slate-100"
       initial={{ opacity: 0 }}
@@ -92,6 +103,38 @@ const ServicesCard = () => {
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-black bg-opacity-40 group-hover:bg-opacity-60 transition-opacity duration-300"></div>
+=======
+    <>
+      <div className="container mx-auto px-4 py-8 font-coolvetica">
+        
+        <section id="services">
+          <div className="container mx-auto px-4 md:px-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {services.map((service, index) => (
+                <div
+                  key={index}
+                  className="relative bg-white shadow-md w-full h-full overflow-hidden rounded-lg transition-transform transform hover:scale-105 duration-300 group"
+                >
+                 
+                  <div className="relative w-full h-72"> 
+                    <img
+                      src={service.img}
+                      alt={service.title}
+                      className="w-full h-full object-cover transition-opacity duration-500 opacity-80 group-hover:opacity-40"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-70"></div>
+                  </div>
+
+                 
+                  <div className="absolute inset-0 flex flex-col justify-center items-center text-white p-4 transition-opacity duration-500">
+                    <h3 className="text-lg">{service.title}</h3> 
+
+                  
+                    <p className="text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500 mt-2 text-center">
+                      {service.description}
+                    </p>
+                  </div>
+>>>>>>> 944bb1eda6ef84f62e27444a2edd129a2645b8c7
                 </div>
 
                 {/* Text & Button Section */}

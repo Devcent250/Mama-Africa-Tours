@@ -1,10 +1,17 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+<<<<<<< HEAD
 import { motion } from "framer-motion";
 
 const isLargeScreen = () => {
   if (typeof window !== "undefined") {
     return window.innerWidth >= 1024;
+=======
+
+const isLargeScreen = () => {
+  if (typeof window !== "undefined") {
+    return window.innerWidth >= 1024; 
+>>>>>>> 944bb1eda6ef84f62e27444a2edd129a2645b8c7
   }
   return true;
 };
@@ -19,7 +26,11 @@ const HeroSection = () => {
 
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isAutoSliding, setIsAutoSliding] = useState(isLargeScreen());
+<<<<<<< HEAD
   const [selectedTour, setSelectedTour] = useState("");
+=======
+  const [selectedTour, setSelectedTour] = useState(""); 
+>>>>>>> 944bb1eda6ef84f62e27444a2edd129a2645b8c7
   const navigate = useNavigate();
 
   const tourOptions = [
@@ -57,6 +68,7 @@ const HeroSection = () => {
   };
 
   return (
+<<<<<<< HEAD
     <motion.div
       className="relative h-screen bg-cover bg-center md:mt-24 font-coolvetica bg-slate-200"
       style={{ backgroundImage: `url(${images[currentSlide]})` }}
@@ -78,6 +90,16 @@ const HeroSection = () => {
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 1, delay: 0.5 }}
         >
+=======
+    <div
+      className="relative h-screen bg-cover bg-center md:mt-36 font-coolvetica"
+      style={{ backgroundImage: `url(${images[currentSlide]})` }}
+    >
+      <div className="absolute inset-0 bg-black opacity-50"></div>
+
+      <div className="relative z-10 flex flex-col items-center justify-center h-full text-center text-white">
+        <h1 className="text-4xl lg:text-8xl font-bold font-Coolvetica">
+>>>>>>> 944bb1eda6ef84f62e27444a2edd129a2645b8c7
           Explore the wild with us
         </motion.h1>
         <motion.p
@@ -88,6 +110,7 @@ const HeroSection = () => {
         >
           Safety to the wild only comes when you travel with those who
           understand the wild.
+<<<<<<< HEAD
         </motion.p>
 
         <motion.button
@@ -95,11 +118,22 @@ const HeroSection = () => {
           className="mt-4 lg:mt-8 text-gray-800 bg-gradient-to-r from-[#D6ED07] to-yellow-300 hover:from-[#EDFF4F] hover:to-[#FFFF99] hover:font-normal font-bold py-2 px-4 lg:px-6 rounded-md transition duration-300 transform hover:scale-110 hover:shadow-lg shadow-[0_0_15px_#D6ED07] animate-pulse"
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
+=======
+        </p>
+
+       
+       
+
+        <button
+          onClick={handleBookingClick}
+          className="mt-4 lg:mt-8 bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 lg:px-6 rounded-full transition duration-300 transform hover:scale-110 hover:shadow-lg"
+>>>>>>> 944bb1eda6ef84f62e27444a2edd129a2645b8c7
         >
           BOOK NOW
         </motion.button>
       </div>
 
+<<<<<<< HEAD
       <motion.div 
         id="services" 
         className="absolute bottom-[-16px] w-full py-4 text-center"
@@ -107,6 +141,9 @@ const HeroSection = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1, delay: 1 }}
       >
+=======
+      <div id="services" className="absolute bottom-[-16px] w-full py-4 text-center">
+>>>>>>> 944bb1eda6ef84f62e27444a2edd129a2645b8c7
         <h2 className="text-5xl lg:text-3xl font-bold text-black">
           <span className="bg-white text-green-500 py-1 px-12 inline-block rounded-t-lg shadow-md font-coolvetica">
             Our Services

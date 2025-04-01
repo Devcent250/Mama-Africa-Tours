@@ -1,6 +1,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 944bb1eda6ef84f62e27444a2edd129a2645b8c7
 import img1 from '/img/07.jpg';
 import img2 from '/img/04.jpg';
 import img3 from '/img/06.jpg';
@@ -60,16 +64,29 @@ const servicesData = [
 
 const Services = () => {
   return (
+<<<<<<< HEAD
     <div className="container mx-auto px-4 py-12 font-Coolvetica bg-slate-200">
       <div
         className="bg-cover bg-center h-[400px] flex items-center justify-center ml-[-16px] mr-[-16px]"
         style={{ backgroundImage: `url('/img/DSC01135.jpeg')` }}
       >
         <h1 className="text-5xl text-white px-6 py-2 font-bold rounded-lg shadow-lg">
+=======
+    <div className="container mx-auto px-4 py-8 font-Coolvetica">
+    
+      <div
+        className="bg-cover bg-center h-[400px] flex items-center justify-center ml-[-16px] mr-[-16px]"
+        style={{
+          backgroundImage: `url('/img/23.jpg')`, 
+        }}
+      >
+        <h1 className="text-5xl text-white bg-opacity-50 p-4 font-bold rounded-lg font-coolvetica">
+>>>>>>> 944bb1eda6ef84f62e27444a2edd129a2645b8c7
           Our Services
         </h1>
       </div>
 
+<<<<<<< HEAD
       <section id="services" className="mt-11">
         <div className="container mx-auto px-4 md:px-8">
           <motion.div
@@ -80,19 +97,34 @@ const Services = () => {
           >
             {servicesData.map((service, index) => (
               <motion.div
+=======
+      
+      <section id="services" className="font-coolvetica">
+        <div className="container mx-auto px-4 md:px-8 mt-11">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {Package.map((service, index) => (
+              <div
+>>>>>>> 944bb1eda6ef84f62e27444a2edd129a2645b8c7
                 key={index}
                 whileHover={{ scale: 1.05 }}
                 transition={{ duration: 0.3 }}
                 className="relative bg-white shadow-lg w-full h-full rounded-lg overflow-hidden group"
               >
+<<<<<<< HEAD
                 <div className="relative w-full h-72 overflow-hidden">
                   <motion.img
+=======
+          
+                <div className="relative w-full h-72"> 
+                  <img
+>>>>>>> 944bb1eda6ef84f62e27444a2edd129a2645b8c7
                     src={service.img}
                     alt={service.title}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-black bg-opacity-40 group-hover:bg-opacity-60 transition-opacity duration-300"></div>
                 </div>
+<<<<<<< HEAD
 
                 <div className="absolute inset-0 flex flex-col justify-center items-center text-white p-6 transition-all duration-500">
                   <h3 className="text-lg font-bold mb-2">{service.title}</h3>
@@ -101,6 +133,16 @@ const Services = () => {
                       <li key={i}>{point}</li>
                     ))}
                   </ul>
+=======
+                
+                <div className="absolute inset-0 flex flex-col justify-center items-center text-white p-4 transition-opacity duration-500">
+                  <h3 className="text-lg">{service.title}</h3>
+
+                  
+                  <p className="text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500 mt-2 text-center">
+                    {service.description}
+                  </p>
+>>>>>>> 944bb1eda6ef84f62e27444a2edd129a2645b8c7
                 </div>
               </motion.div>
             ))}

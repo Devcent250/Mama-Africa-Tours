@@ -22,7 +22,11 @@ import HistoricalSites from './Components/HistoricalSites';
 import GastronomicExperience from './Components/GastronomicExperience';
 
 function App() {
+<<<<<<< HEAD
 
+=======
+  
+>>>>>>> 944bb1eda6ef84f62e27444a2edd129a2645b8c7
   const [selectedTour, setSelectedTour] = useState(null);
 
   const packagesData = [
@@ -65,11 +69,16 @@ function App() {
   ];
 }
 
+<<<<<<< HEAD
   const handleTourSelect = (tourName) => {
     setSelectedTour(tourName);
 
   
   const handleTourSelect = (tourName) => {
+=======
+  
+  const handleTourSelect = (tourName) => {
+>>>>>>> 944bb1eda6ef84f62e27444a2edd129a2645b8c7
     setSelectedTour(tourName); 
     console.log(`Tour selected: ${tourName}`);
   };
