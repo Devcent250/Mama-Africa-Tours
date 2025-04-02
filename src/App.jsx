@@ -9,7 +9,6 @@ import MissionVision from './Components/MissionVision';
 import Footer from './Components/shared/Footer';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
-
 import About from './Components/About';
 import Services from './Components/Services';
 import Packages from './Components/Packages';
@@ -22,7 +21,6 @@ import HistoricalSites from './Components/HistoricalSites';
 import GastronomicExperience from './Components/GastronomicExperience';
 
 function App() {
-
   const [selectedTour, setSelectedTour] = useState(null);
 
   const packagesData = [
@@ -63,17 +61,9 @@ function App() {
       imageUrl: '/img/08.jpg',
     },
   ];
-}
 
   const handleTourSelect = (tourName) => {
     setSelectedTour(tourName);
-
-  
-  const handleTourSelect = (tourName) => {
-
-  
-  const handleTourSelect = (tourName) => {
- setSelectedTour(tourName); 
     console.log(`Tour selected: ${tourName}`);
   };
 
@@ -112,6 +102,6 @@ function App() {
       </div>
     </Router>
   );
-}}
+}
 
-export default App
+export default App;
