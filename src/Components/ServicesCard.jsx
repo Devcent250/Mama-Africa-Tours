@@ -3,9 +3,9 @@ import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 
 import img1 from "/img/07.jpg";
-import img2 from "/img/SILVER_MONKEY.jpg";
+import img2 from "/img/GLR_mountain.jpg";
 import img3 from "/img/SILVER_MONKEY.jpg";
-import img4 from "/img/SILVER_MONKEY.jpg";
+import img4 from "/img/Saddle-billed_stork_couple.jpg";
 import img5 from "/img/wedding.jpg";
 import img6 from "/img/Old_prepararion_food.jpg";
 
