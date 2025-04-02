@@ -3,10 +3,7 @@ import emailjs from '@emailjs/browser';
 import { useLocation } from 'react-router-dom';
 import confetti from 'canvas-confetti';
 import CloseIcon from '@mui/icons-material/Close';
-<<<<<<< HEAD
 import { motion } from 'framer-motion';
-=======
->>>>>>> 944bb1eda6ef84f62e27444a2edd129a2645b8c7
 
 const Booking = ({ selectedTourFromParent }) => {
   const form = useRef();
@@ -34,18 +31,10 @@ const Booking = ({ selectedTourFromParent }) => {
 
   const attendeeCategories = ['Single', 'Couple', 'Family'];
 
-<<<<<<< HEAD
   const attendeeCategoryPrices = {
     Single: 100,
     Couple: 180,
     Family: 250,
-=======
-
-  const attendeeCategoryPrices = {
-    Single: 100, 
-    Couple: 180, 
-    Family: 250, 
->>>>>>> 944bb1eda6ef84f62e27444a2edd129a2645b8c7
   };
 
   const location = useLocation();
@@ -54,11 +43,7 @@ const Booking = ({ selectedTourFromParent }) => {
     const tourFromState = location.state?.selectedTour;
     if (tourFromState) {
       setSelectedTour(tourFromState);
-<<<<<<< HEAD
       setDisableTourSelection(true);
-=======
-      setDisableTourSelection(true); 
->>>>>>> 944bb1eda6ef84f62e27444a2edd129a2645b8c7
     } else if (selectedTourFromParent) {
       setSelectedTour(selectedTourFromParent);
       setDisableTourSelection(true);
@@ -105,318 +90,177 @@ const Booking = ({ selectedTourFromParent }) => {
   };
 
   return (
-<<<<<<< HEAD
     <div className="w-full max-w-lg bg-white shadow-md rounded-lg p-6">
-    {/* Title outside the form */}
-    <h2 className="text-2xl font-bold text-green-600 text-center mt-28 mb-6">
-      Book Your Perfect Tour
-    </h2>
+      <h2 className="text-2xl font-bold text-green-600 text-center mt-28 mb-6">
+        Book Your Perfect Tour
+      </h2>
 
-    {!emailSent ? (
-      <form ref={form} onSubmit={sendEmail} className="space-y-6">
-        {/* Personal Information */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div className="mb-4">
-            <label className="block text-gray-700 font-bold mb-2">
-              Full Names <span className="text-red-500">*</span>
-            </label>
-            <input
-              type="text"
-              name="user_name"
-              placeholder="ex: Mark Devcent"
-              required
-              value={fullName}
-              onChange={(e) => setFullName(e.target.value)} // Update full name
-              className="w-full px-3 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500"
-            />
-          </div>
-          <div className="mb-4">
-            <label className="block text-gray-700 font-bold mb-2">
-              Email <span className="text-red-500">*</span>
-            </label>
-            <input
-              type="email"
-              name="user_email"
-              placeholder="ex: devcent@gmail.com"
-              required
-              value={email}
-              onChange={(e) => setEmail(e.target.value)} // Update email
-              className="w-full px-3 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500"
-            />
-=======
-    <div className="flex items-center justify-center min-h-screen bg-gray-100 py-12 px-4 font-Coolvetica">
-      {loading && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
-          <div className="text-center">
-            <div className="loader ease-linear rounded-full border-8 border-t-8 border-gray-200 h-16 w-16"></div>
->>>>>>> 944bb1eda6ef84f62e27444a2edd129a2645b8c7
-          </div>
-        </div>
-
-<<<<<<< HEAD
-        <div className="mb-4">
-          <label className="block text-gray-700 font-bold mb-2">
-            Contact <span className="text-red-500">*</span>
-          </label>
-          <input
-            type="text"
-            name="user_contact"
-            placeholder="+(250) 788 886 427"
-            required
-            value={contact}
-            onChange={(e) => setContact(e.target.value)} // Update contact
-            className="w-full px-3 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500"
-          />
-        </div>
-
-        {/* Booking Details */}
-        <div className="mb-4">
-          <label className="block text-gray-700 font-bold mb-2">
-            Booking Period <span className="text-red-500">*</span>
-          </label>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-            <input
-              type="date"
-              name="start_date"
-              required
-              value={startDate}
-              onChange={(e) => setStartDate(e.target.value)} // Update start date
-              className="w-full px-3 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500"
-            />
-            <input
-              type="date"
-              name="end_date"
-              required
-              value={endDate}
-              onChange={(e) => setEndDate(e.target.value)} // Update end date
-              className="w-full px-3 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500"
-            />
-          </div>
-        </div>
-
-        {/* Booking Tour Dropdown */}
-        <div className="mb-4">
-          <label className="block text-gray-700 font-bold mb-2">
-            Which tour are you booking? <span className="text-red-500">*</span>
-          </label>
-          <select
-            name="tour_selection"
-            required
-            value={selectedTour}
-            onChange={(e) => setSelectedTour(e.target.value)} // Update selected tour
-            className="w-full px-3 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500"
-          >
-            <option value="">Select a tour</option>
-            {tours.map((tour, index) => (
-              <option key={index} value={tour}>
-                {tour}
-              </option>
-            ))}
-          </select>
-        </div>
-
-        {/* Display Selected Tour */}
-        <div className="mb-4">
-          <label className="block text-gray-700 font-bold mb-2">
-            Selected Tour
-          </label>
-          <input
-            type="text"
-            value={selectedTour}
-            readOnly
-            className="w-full px-3 py-2 border rounded-lg shadow-sm bg-gray-100"
-          />
-        </div>
-
-        <div className="mb-4">
-          <label className="block text-gray-700 font-bold mb-2">
-            Attendee Category <span className="text-red-500">*</span>
-          </label>
-          <select
-            name="attendee_category"
-            required
-            value={attendeeCategory}
-            onChange={(e) => setAttendeeCategory(e.target.value)} // Update attendee category
-            className="w-full px-3 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500"
-          >
-            <option value="Rwandan">Rwandan - $50 Per Day</option>
-            <option value="Couple">Couple - $90 Per Day</option>
-            <option value="Children">Children - $35 Per Day</option>
-            <option value="Foreigners">Foreigners - $180 Per Day</option>
-          </select>
-        </div>
-
-        <button
-          type="submit"
-          className="w-full bg-green-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500"
-        >
-          Send Booking Request
-        </button>
-      </form>
-    ) : (
-      <div className="text-center">
-        <h2 className="text-2xl font-bold text-green-500">Thank you!</h2>
-        <p className="mt-2 text-gray-700">
-          Your booking request has been sent successfully.
-        </p>
-=======
-      {showSuccessDialog && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
-          <div className="bg-white p-6 rounded-lg shadow-md">
-            <h2 className="text-xl font-bold text-green-500 mb-4">Thank you!</h2>
-            <p className="text-gray-700">Your booking request has been sent successfully.</p>
-            <button
-              className="mt-4 bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded"
-              onClick={handleCloseDialog}
-            >
-              <CloseIcon />
-            </button>
-          </div>
-        </div>
-      )}
-
-      <div className="bg-white shadow-md rounded-lg w-full p-6 lg:w-1/2 mt-32">
-        {!emailSent ? (
-          <form ref={form} onSubmit={sendEmail} className="space-y-6 w-full">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div>
-                <label className="block text-gray-700 font-bold mb-2">
-                  Full Name <span className="text-red-500">*</span>
-                </label>
-                <input
-                  type="text"
-                  name="full_name"
-                  required
-                  value={fullName}
-                  onChange={(e) => setFullName(e.target.value)}
-                  className="w-full px-3 py-2 border rounded-lg shadow-sm focus:ring-2 focus:ring-green-500"
-                />
-              </div>
-              <div>
-                <label className="block text-gray-700 font-bold mb-2">
-                  Email <span className="text-red-500">*</span>
-                </label>
-                <input
-                  type="email"
-                  name="email"
-                  required
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  className="w-full px-3 py-2 border rounded-lg shadow-sm focus:ring-2 focus:ring-green-500"
-                />
-              </div>
-            </div>
-
+      {!emailSent ? (
+        <form ref={form} onSubmit={sendEmail} className="space-y-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
               <label className="block text-gray-700 font-bold mb-2">
-                Contact <span className="text-red-500">*</span>
+                Full Name <span className="text-red-500">*</span>
               </label>
               <input
                 type="text"
-                name="contact"
+                name="user_name"
+                placeholder="ex: Mark Devcent"
                 required
-                value={contact}
-                onChange={(e) => setContact(e.target.value)}
+                value={fullName}
+                onChange={(e) => setFullName(e.target.value)}
                 className="w-full px-3 py-2 border rounded-lg shadow-sm focus:ring-2 focus:ring-green-500"
               />
             </div>
-
             <div>
               <label className="block text-gray-700 font-bold mb-2">
-                Booking Period <span className="text-red-500">*</span>
-              </label>
-              <div className="grid grid-cols-2 gap-2">
-                <input
-                  type="date"
-                  name="start_date"
-                  required
-                  value={startDate}
-                  onChange={(e) => setStartDate(e.target.value)}
-                  className="w-full px-3 py-2 border rounded-lg shadow-sm focus:ring-2 focus:ring-green-500"
-                />
-                <input
-                  type="date"
-                  name="end_date"
-                  required
-                  value={endDate}
-                  onChange={(e) => setEndDate(e.target.value)}
-                  className="w-full px-3 py-2 border rounded-lg shadow-sm focus:ring-2 focus:ring-green-500"
-                />
-              </div>
-            </div>
-
-            <div>
-              <label className="block text-gray-700 font-bold mb-2">
-                Tour Selection <span className="text-red-500">*</span>
-              </label>
-              <select
-                name="tour_selection"
-                value={selectedTour}
-                onChange={(e) => setSelectedTour(e.target.value)}
-                className="w-full px-3 py-2 border rounded-lg shadow-sm focus:ring-2 focus:ring-green-500"
-                disabled={disableTourSelection}
-                required
-              >
-                <option value="" disabled>
-                  {disableTourSelection
-                    ? 'Tour selected from packages'
-                    : 'Select a tour'}
-                </option>
-                {tours.map((tour, index) => (
-                  <option key={index} value={tour}>
-                    {tour}
-                  </option>
-                ))}
-              </select>
-            </div>
-
-            <div>
-              <label className="block text-gray-700 font-bold mb-2">
-                Attendee Category <span className="text-red-500">*</span>
-              </label>
-              <select
-                name="attendee_category"
-                value={attendeeCategory}
-                onChange={(e) => setAttendeeCategory(e.target.value)}
-                className="w-full px-3 py-2 border rounded-lg shadow-sm focus:ring-2 focus:ring-green-500"
-                required
-              >
-                <option value="" disabled>
-                  Select category
-                </option>
-                {attendeeCategories.map((category, index) => (
-                  <option key={index} value={category}>
-                    {category}
-                  </option>
-                ))}
-              </select>
-            </div>
-
-            <div>
-              <label className="block text-gray-700 font-bold mb-2">
-                Total Amount <span className="text-red-500">*</span>
+                Email <span className="text-red-500">*</span>
               </label>
               <input
-                type="number"
-                name="total_amount"
-                value={totalAmount}
-                readOnly
-                className="w-full px-3 py-2 border rounded-lg shadow-sm bg-gray-100"
+                type="email"
+                name="user_email"
+                placeholder="ex: devcent@gmail.com"
+                required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="w-full px-3 py-2 border rounded-lg shadow-sm focus:ring-2 focus:ring-green-500"
               />
             </div>
+          </div>
 
-            <button
-              type="submit"
-              className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded w-full"
+          <div>
+            <label className="block text-gray-700 font-bold mb-2">
+              Contact <span className="text-red-500">*</span>
+            </label>
+            <input
+              type="text"
+              name="user_contact"
+              placeholder="+(250) 788 886 427"
+              required
+              value={contact}
+              onChange={(e) => setContact(e.target.value)}
+              className="w-full px-3 py-2 border rounded-lg shadow-sm focus:ring-2 focus:ring-green-500"
+            />
+          </div>
+
+          <div>
+            <label className="block text-gray-700 font-bold mb-2">
+              Booking Period <span className="text-red-500">*</span>
+            </label>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+              <input
+                type="date"
+                name="start_date"
+                required
+                value={startDate}
+                onChange={(e) => setStartDate(e.target.value)}
+                className="w-full px-3 py-2 border rounded-lg shadow-sm focus:ring-2 focus:ring-green-500"
+              />
+              <input
+                type="date"
+                name="end_date"
+                required
+                value={endDate}
+                onChange={(e) => setEndDate(e.target.value)}
+                className="w-full px-3 py-2 border rounded-lg shadow-sm focus:ring-2 focus:ring-green-500"
+              />
+            </div>
+          </div>
+
+          <div>
+            <label className="block text-gray-700 font-bold mb-2">
+              Tour Selection <span className="text-red-500">*</span>
+            </label>
+            <select
+              name="tour_selection"
+              value={selectedTour}
+              onChange={(e) => setSelectedTour(e.target.value)}
+              className="w-full px-3 py-2 border rounded-lg shadow-sm focus:ring-2 focus:ring-green-500"
+              disabled={disableTourSelection}
+              required
             >
-              SEND BOOKING
-            </button>
-          </form>
-        ) : null}
->>>>>>> 944bb1eda6ef84f62e27444a2edd129a2645b8c7
-      </div>
-    )}
-  </div>
+              <option value="" disabled>
+                {disableTourSelection
+                  ? 'Tour selected from packages'
+                  : 'Select a tour'}
+              </option>
+              {tours.map((tour, index) => (
+                <option key={index} value={tour}>
+                  {tour}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          <div>
+            <label className="block text-gray-700 font-bold mb-2">
+              Attendee Category <span className="text-red-500">*</span>
+            </label>
+            <select
+              name="attendee_category"
+              value={attendeeCategory}
+              onChange={(e) => setAttendeeCategory(e.target.value)}
+              className="w-full px-3 py-2 border rounded-lg shadow-sm focus:ring-2 focus:ring-green-500"
+              required
+            >
+              <option value="" disabled>
+                Select category
+              </option>
+              {attendeeCategories.map((category, index) => (
+                <option key={index} value={category}>
+                  {category}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          <div>
+            <label className="block text-gray-700 font-bold mb-2">
+              Total Amount <span className="text-red-500">*</span>
+            </label>
+            <input
+              type="number"
+              name="total_amount"
+              value={totalAmount}
+              readOnly
+              className="w-full px-3 py-2 border rounded-lg shadow-sm bg-gray-100"
+            />
+          </div>
+
+          <button
+            type="submit"
+            className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded w-full"
+          >
+            SEND BOOKING
+          </button>
+        </form>
+      ) : (
+        <div className="text-center">
+          <h2 className="text-2xl font-bold text-green-500">Thank you!</h2>
+          <p className="mt-2 text-gray-700">
+            Your booking request has been sent successfully.
+          </p>
+          {showSuccessDialog && (
+            <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+              <div className="bg-white p-6 rounded-lg shadow-md">
+                <h2 className="text-xl font-bold text-green-500 mb-4">
+                  Thank you!
+                </h2>
+                <p className="text-gray-700">
+                  Your booking request has been sent successfully.
+                </p>
+                <button
+                  className="mt-4 bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded"
+                  onClick={handleCloseDialog}
+                >
+                  <CloseIcon />
+                </button>
+              </div>
+            </div>
+          )}
+        </div>
+      )}
+    </div>
   );
 };
 
