@@ -9,7 +9,7 @@ const NyungweForest = () => {
   };
 
   return (
-    <div className="container mx-auto px-4 py-8 font-coolvetica mt-28">
+    <div className="container mx-auto px-4 py-8 font-coolvetica mt-12">
       <div
         className="bg-cover bg-center h-[400px] flex items-center justify-center ml-[-16px] mr-[-16px]"
         style={{
@@ -17,7 +17,7 @@ const NyungweForest = () => {
         }}
       >
         <motion.h1
-          className="text-5xl text-white bg-opacity-50 p-4 rounded-lg font-bold"
+          className="text-2xl lg:text-5xl text-white bg-opacity-50 p-4 rounded-lg font-bold"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1 }}
@@ -40,7 +40,7 @@ const NyungweForest = () => {
 
           <div className="p-8">
             <motion.h1
-              className="text-4xl font-bold mb-4"
+              className="lg:text-4xl text-xl font-bold mb-4"
               initial={{ x: -200 }}
               animate={{ x: 0 }}
               transition={{ duration: 1 }}

@@ -10,7 +10,7 @@ const GuidedBirds = () => {
   };
 
   return (
-    <div className="container mx-auto px-4 py-8 font-coolvetica mt-28">
+    <div className="container mx-auto px-4 py-8 font-coolvetica mt-12">
 
       <motion.div
         className="bg-cover bg-center h-[400px] flex items-center justify-center ml-[-16px] mr-[-16px]"
@@ -19,7 +19,7 @@ const GuidedBirds = () => {
         animate={{ opacity: 1 }}
         transition={{ duration: 1 }}
       >
-        <h1 className="text-5xl text-white bg-opacity-50 p-4 rounded-lg font-bold">
+        <h1 className="text-2xl lg:text-5xl text-white bg-opacity-50 p-4 rounded-lg font-bold">
           Guided Bird Watching Tour
         </h1>
       </motion.div>
@@ -46,7 +46,7 @@ const GuidedBirds = () => {
             animate={{ x: 0, opacity: 1 }}
             transition={{ duration: 1 }}
           >
-            <h1 className="text-4xl font-bold mb-4">Guided Bird Watching Tour</h1>
+            <h1 className="lg:text-4xl text-xl font-bold mb-4">Guided Bird Watching Tour</h1>
             <p className="text-gray-700 text-lg mb-8">
               Discover the beauty of birds in their natural habitat with our expert-guided bird watching tour. Explore diverse ecosystems and witness rare and stunning species of birds from the comfort of our guided tour. Whether you're an experienced birdwatcher or a beginner, this tour offers something for everyone.
             </p>

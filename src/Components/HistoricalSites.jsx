@@ -10,7 +10,7 @@ const HistoricalSites = () => {
   };
   
   return (
-    <div className="container mx-auto px-4 py-8 font-coolvetica mt-28">
+    <div className="container mx-auto px-4 py-8 font-coolvetica mt-12">
       
   
       <motion.div
@@ -20,7 +20,7 @@ const HistoricalSites = () => {
         animate={{ opacity: 1 }}
         transition={{ duration: 1 }}
       >
-        <h1 className="text-5xl text-white bg-opacity-50 p-4 rounded-lg font-bold">
+        <h1 className="text-2xl lg:text-5xl text-white bg-opacity-50 p-4 rounded-lg font-bold">
           Historical and Educational Tours in Rwanda
         </h1>
       </motion.div>
@@ -48,7 +48,7 @@ const HistoricalSites = () => {
             animate={{ x: 0, opacity: 1 }}
             transition={{ duration: 1 }}
           >
-            <h2 className="text-4xl font-bold mb-4">Genocide Memorial Visits</h2>
+            <h2 className="lg:text-4xl text-xl font-bold mb-4">Genocide Memorial Visits</h2>
             <p className="text-gray-700 text-lg mb-8">
               Explore Rwanda’s tragic past and resilient present through guided tours of Genocide Memorial sites.
               Gain deep insights into the country’s history, the impact of the genocide, and Rwanda’s journey toward unity and reconciliation.
@@ -70,7 +70,7 @@ const HistoricalSites = () => {
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 1 }}
           >
-            <h2 className="text-4xl font-bold mb-4">Local History Tours</h2>
+            <h2 className="lg:text-4xl text-xl font-bold mb-4">Local History Tours</h2>
             <p className="text-gray-700 text-lg mb-8">
               Discover Rwanda’s rich heritage by visiting historical sites and engaging in storytelling sessions with local guides.
               Learn about the traditions, culture, and significant events that shaped Rwanda’s past and present.
@@ -78,15 +78,7 @@ const HistoricalSites = () => {
             <p className="text-gray-700 text-lg mb-8">
               These tours provide a unique opportunity to hear firsthand accounts from historians and elders, making history come alive in an immersive way.
             </p>
-            <motion.button
-              onClick={handleBookNow}
-              className="mt-4 lg:mt-8 text-green-900 bg-gradient-to-r from-[#D6ED07] to-yellow-300 hover:from-[#EDFF4F] hover:to-[#FFFF99] hover:text-black hover:font-normal font-bold py-2 px-4 lg:px-6 rounded-md transition duration-300 transform hover:scale-110 hover:shadow-lg shadow-[0_0_15px_#D6ED07] animate-pulse"
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-            >
-              BOOK NOW
-            </motion.button>
-          </motion.div>
+           
           
           <motion.div
             className="relative"
@@ -99,6 +91,15 @@ const HistoricalSites = () => {
               alt="Local History Tour"
               className="w-full h-full object-cover rounded-lg shadow-lg"
             />
+          </motion.div>
+          <motion.button
+              onClick={handleBookNow}
+              className="mt-4 lg:mt-8 text-green-900 bg-gradient-to-r from-[#D6ED07] to-yellow-300 hover:from-[#EDFF4F] hover:to-[#FFFF99] hover:text-black hover:font-normal font-bold py-2 px-4 lg:px-6 rounded-md transition duration-300 transform hover:scale-110 hover:shadow-lg shadow-[0_0_15px_#D6ED07] animate-pulse"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+            >
+              BOOK NOW
+            </motion.button>
           </motion.div>
         </div>
       </div>

@@ -26,7 +26,7 @@ const MountainGorilla = () => {
 
   return (
     <motion.div
-      className="container mx-auto px-4 py-8 font-coolvetica mt-28"
+      className="container mx-auto px-4 py-8 font-coolvetica mt-12"
       initial="hidden"
       animate="visible"
       variants={fadeIn}
@@ -38,7 +38,7 @@ const MountainGorilla = () => {
         variants={fadeIn}
       >
         <motion.h1
-          className="text-5xl text-white bg-opacity-50 p-4 rounded-lg font-bold"
+          className="text-2xl lg:text-5xl text-white bg-opacity-50 p-4 rounded-lg font-bold"
           variants={slideUp}
         >
           Mountain Gorilla Trekking
@@ -57,7 +57,7 @@ const MountainGorilla = () => {
           </motion.div>
 
           <motion.div className="p-8" variants={slideUp}>
-            <h1 className="text-4xl font-bold mb-4">Mountain Gorilla Trekking</h1>
+            <h1 className="lg:text-4xl text-xl font-bold mb-4">Mountain Gorilla Trekking</h1>
             <p className="text-gray-700 text-lg mb-8">
               Mountain gorilla trekking is one of the most thrilling wildlife experiences, offering a chance to observe these majestic primates in their natural habitat.
               Found in the dense forests of Rwanda, Uganda, and the Democratic Republic of Congo, mountain gorillas live in family groups and display fascinating behaviors.
@@ -70,7 +70,9 @@ const MountainGorilla = () => {
               The conservation efforts to protect mountain gorillas have been highly successful, making this a once-in-a-lifetime eco-tourism experience.
               Seeing them up close, watching their interactions, and understanding their importance to biodiversity is an unforgettable adventure.
             </p>
+            
           </motion.div>
+          
         </div>
 
 
@@ -83,7 +85,17 @@ const MountainGorilla = () => {
               A permit is required for trekking, and a limited number of visitors are allowed each day to minimize impact on the gorillas and their environment.
               Booking in advance is essential due to high demand.
             </p>
-            <motion.button
+           
+            <motion.div className="relative" variants={scaleUp}>
+            <motion.img
+              src="/img/gorilla.jpg"
+              alt="Mountain Gorilla"
+              className="w-full h-full object-cover rounded-lg shadow-lg"
+              variants={fadeIn}
+            />
+          </motion.div>
+        
+          <motion.button
               onClick={handleBookNow}
               className="mt-4 lg:mt-8 text-green-900 bg-gradient-to-r from-[#D6ED07] to-yellow-300 hover:from-[#EDFF4F] hover:to-[#FFFF99] hover:text-black hover:font-normal font-bold py-2 px-4 lg:px-6 rounded-md transition duration-300 transform hover:scale-110 hover:shadow-lg shadow-[0_0_15px_#D6ED07] animate-pulse"
               whileHover={{ scale: 1.1 }}
@@ -91,15 +103,6 @@ const MountainGorilla = () => {
             >
               BOOK NOW
             </motion.button>
-          </motion.div>
-
-          <motion.div className="relative" variants={scaleUp}>
-            <motion.img
-              src="/img/gorilla.jpg"
-              alt="Mountain Gorilla"
-              className="w-full h-full object-cover rounded-lg shadow-lg"
-              variants={fadeIn}
-            />
           </motion.div>
         </div>
       </div>

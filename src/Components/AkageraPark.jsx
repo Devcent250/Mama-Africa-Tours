@@ -10,7 +10,7 @@ const AkageraPark = () => {
   };
 
   return (
-    <div className="container mx-auto px-4 py-8 font-coolvetica mt-28">
+    <div className="container mx-auto px-4 py-8 font-coolvetica mt-12">
       
       <motion.div
         className="bg-cover bg-center h-[400px] flex items-center justify-center ml-[-16px] mr-[-16px]"
@@ -21,7 +21,7 @@ const AkageraPark = () => {
         animate={{ opacity: 1 }}
         transition={{ duration: 1 }}
       >
-        <h1 className="text-5xl text-white bg-opacity-50 p-4 rounded-lg font-bold">
+        <h1 className="text-2xl lg:text-5xl text-white bg-opacity-50 p-4 rounded-lg font-bold">
           Akagera National Park
         </h1>
       </motion.div>
@@ -51,7 +51,7 @@ const AkageraPark = () => {
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 0.5 }}
           >
-            <h1 className="text-4xl font-bold mb-4">Akagera National Park</h1>
+            <h1 className="lg:text-4xl text-xl  font-bold mb-4">Akagera National Park</h1>
             <p className="text-gray-700 text-lg mb-8">
               Akagera National Park lies in eastern Rwanda, hugging the border with Tanzania. It's characterized by woodland, swamps, low mountains and savannah. The varied terrain shelters wildlife including zebras, giraffes, elephants, lions and hundreds of bird species, such as the rare shoebill stork. In the southern part of the park, vast Lake Ihema is home to hippos and crocodiles.
             </p>
