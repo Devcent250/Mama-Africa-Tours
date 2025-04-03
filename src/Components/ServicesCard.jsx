@@ -102,7 +102,7 @@ const ServicesCard = () => {
                 <div className="absolute inset-0 flex flex-col justify-center items-center text-white p-2 service-content">
                   <h1 className="service-title">{service.title}</h1>
                   <motion.p
-                    className="text-sm text-center opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-500"
+                    className="text-sm  opacity-0 group-hover:opacity-100 text-left transform translate-y-4 group-hover:translate-y-0 transition-all duration-500"
                   >
                     {service.description}
                   </motion.p>
