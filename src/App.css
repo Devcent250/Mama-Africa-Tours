@@ -3,6 +3,8 @@
 @tailwind utilities;
 
 
+
+
 .service-title {
     position: absolute;
     top: 50%;
@@ -19,4 +21,10 @@
 
 .group:hover .service-title {
     transform: translate(-50%, -250%);
+}
+
+@media (max-width: 640px) {
+    .service-title {
+        transform: translate(-50%, -50%);
+    }
 }
