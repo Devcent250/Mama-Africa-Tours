@@ -64,7 +64,7 @@ const ServicesCard = () => {
 
   return (
     <motion.div
-      className="container mx-auto px-4 py-8 font-coolvetica bg-slate-100"
+      className="container mx-auto px-6 py-10 font-coolvetica bg-slate-100" // Adjusted padding
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 1 }}
@@ -76,7 +76,7 @@ const ServicesCard = () => {
       </h2>
 
       <section id="services">
-        <div className="container mx-auto px-4 md:px-8">
+        <div className="container mx-auto px-6 md:px-10"> {/* Adjusted padding */}
           <motion.div
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
             initial={{ opacity: 0 }}
@@ -134,7 +134,7 @@ const ServicesCard = () => {
         animate={{ opacity: 1 }}
         transition={{ delay: 0.5, duration: 1 }}
       >
-        <p className="border border-black rounded-md py-4 px-6 w-full text-center max-w-4xl bg-white">
+        <p className="border border-black rounded-md py-6 px-8 w-full text-left max-w-4xl bg-white leading-relaxed"> {/* Adjusted padding and text alignment */}
           Rwanda is a country rich in culture, wildlife, and natural beauty. Our dedicated guides are here to provide you with unforgettable experiences and insights into the heart of Rwanda. Contact us to plan your adventure today!
         </p>
       </motion.div>
