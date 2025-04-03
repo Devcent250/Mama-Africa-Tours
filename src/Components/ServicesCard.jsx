@@ -64,19 +64,19 @@ const ServicesCard = () => {
 
   return (
     <motion.div
-      className="container mx-auto px-6 py-10 font-coolvetica bg-slate-100" // Adjusted padding
+      className="container mx-auto px-4 py-12 font-coolvetica bg-slate-100" // Increased py-8 to py-12 for more vertical space
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 1 }}
     >
-      <h2 className="text-xl lg:text-xl font-bold text-black text-center mb-6">
-        <span className="bg-white text-green-500 py-1 px-12 lg:mb-12 rounded-t-lg shadow-md font-coolvetica">
+      <h2 className="text-xl lg:text-xl font-bold text-black text-center mb-8"> {/* Increased mb-6 to mb-8 */}
+        <span className="bg-white text-green-500 py-2 px-14 lg:mb-12 rounded-t-lg shadow-md font-coolvetica"> {/* Adjusted px-12 to px-14, py-1 to py-2 */}
           Our Services
         </span>
       </h2>
 
-      <section id="services" className="mx-auto py-6 px-8">
-        <div className="container mx-auto px-6 md:px-10">
+      <section id="services">
+        <div className="container mx-auto px-4 md:px-8">
           <motion.div
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
             initial={{ opacity: 0 }}
@@ -90,32 +90,32 @@ const ServicesCard = () => {
                 transition={{ duration: 0.3 }}
                 className="relative bg-white shadow-lg w-full h-full rounded-lg overflow-hidden group"
               >
-                <div className="relative w-full h-80 overflow-hidden"> 
+                <div className="relative w-full h-72 overflow-hidden">
                   <motion.img
                     src={service.img}
                     alt={service.title}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" // Image width remains full
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-black bg-opacity-20 group-hover:bg-opacity-90 transition-opacity duration-300"></div>
                 </div>
 
-                <div className="absolute inset-0 flex flex-col justify-center items-center text-white p-2 service-content">
+                <div className="absolute inset-0 flex flex-col justify-center items-center text-white p-4 service-content"> {/* Increased p-2 to p-4 */}
                   <h1 className="service-title">{service.title}</h1>
                   <motion.p
-                    className="text-sm text-left opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-500"
+                    className="text-sm text-left opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-500 px-2" // Added px-2 for text breathing room
                   >
                     {service.description}
                   </motion.p>
                 </div>
 
                 <motion.div
-                  className="absolute bottom-6 flex justify-center w-full opacity-0 group-hover:opacity-100 group-hover:translate-y-0 translate-y-4 transition-all duration-500 z-10"
+                  className="absolute bottom-8 flex justify-center w-full opacity-0 group-hover:opacity-100 group-hover:translate-y-0 translate-y-4 transition-all duration-500 z-10" // Adjusted bottom-6 to bottom-8
                 >
                   <motion.button
                     onClick={() => handleNavigation(service.slug)}
                     className="text-gray-800 bg-gradient-to-r from-[#D6ED07] to-yellow-300 hover:from-[#EDFF4F] hover:to-[#FFFF99] 
-                    hover:font-normal font-bold py-1 lg:py-2 px-2 rounded-md transition duration-300 transform hover:scale-110 
-                    hover:shadow-lg shadow-[0_0_15px_#D6ED07]"
+                    hover:font-normal font-bold py-2 lg:py-3 px-4 rounded-md transition duration-300 transform hover:scale-110 
+                    hover:shadow-lg shadow-[0_0_15px_#D6ED07]" // Increased py-1 to py-2, lg:py-2 to lg:py-3, px-2 to px-4
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
                   >
@@ -129,12 +129,12 @@ const ServicesCard = () => {
       </section>
 
       <motion.div
-        className="flex justify-center items-center mt-12"
+        className="flex justify-center items-center mt-10" // Reduced mt-12 to mt-10 for better balance
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.5, duration: 1 }}
       >
-        <p className="border border-black rounded-md py-6 px-8 w-full text-left max-w-4xl bg-white leading-relaxed">
+        <p className="border border-black rounded-md py-6 px-8 w-full text-center max-w-4xl bg-white"> {/* Increased py-4 to py-6, px-6 to px-8 */}
           Rwanda is a country rich in culture, wildlife, and natural beauty. Our dedicated guides are here to provide you with unforgettable experiences and insights into the heart of Rwanda. Contact us to plan your adventure today!
         </p>
       </motion.div>
